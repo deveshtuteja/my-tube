@@ -1,13 +1,16 @@
+import { Provider } from "react-redux";
 import Body from "./components/Body";
 import Head from "./components/Head";
+import appStore from "./utils/appStore";
 
 function App() {
   return (
-    <div>
-      <Head />
-      <Body />
+    <Provider store={appStore}>
+      <div>
+        <Head />
+        <Body />
 
-      {/* 
+        {/* 
       Head
       Body
         -Sidebar
@@ -17,7 +20,8 @@ function App() {
           -VideoContainer
             -VideoCard
       */}
-    </div>
+      </div>
+    </Provider>
   );
 }
 export default App;
