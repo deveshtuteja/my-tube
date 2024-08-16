@@ -1,7 +1,22 @@
+import Body from "./components/Body";
+import Head from "./components/Head";
+
 function App() {
   return (
     <div>
-      <h1>Devesh</h1>
+      <Head />
+      <Body />
+
+      {/* 
+      Head
+      Body
+        -Sidebar
+          -MenuItems
+        -MainContainer
+          -buttonsList
+          -VideoContainer
+            -VideoCard
+      */}
     </div>
   );
 }
