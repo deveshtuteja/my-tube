@@ -1,5 +1,11 @@
+import VideoCard from "./VideoCard";
+
 const VideoContainer = () => {
-  return <div>VideoContainer</div>;
+  return (
+    <div>
+      <VideoCard />
+    </div>
+  );
 };
 
 export default VideoContainer;
