@@ -11,6 +11,9 @@ const ButtonList = () => {
       <Button name="Music" />
       <Button name="Cricket" />
       <Button name="Mixes" />
+      <Button name="T-Series" />
+      <Button name="Hip-Hop" />
+      <Button name="Virat Kohli" />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import ButtonList from "./ButtonList";
+import ButtonList from "./ScrollableButtonList";
 import VideoContainer from "./VideoContainer";
 
 const MainContainer = () => {
