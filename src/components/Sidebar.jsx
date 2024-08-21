@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -6,19 +7,21 @@ const Sidebar = () => {
   return (
     <div className="flex flex-col shadow-lg h-screen w-32 gap-6 px-4 mt-8">
       <div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          enableBackground="new 0 0 24 24"
-          viewBox="0 0 24 24"
-          focusable="false"
-          aria-hidden="true"
-          className="w-8 h-8 rounded-2xl hover:bg-gray-200 cursor-pointer"
-        >
-          <g>
-            <path d="M4 21V10.08l8-6.96 8 6.96V21h-6v-6h-4v6H4z"></path>
-          </g>
-        </svg>
-        <h1 className="text-[12px]">Home</h1>
+        <Link to="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            enableBackground="new 0 0 24 24"
+            viewBox="0 0 24 24"
+            focusable="false"
+            aria-hidden="true"
+            className="w-8 h-8 rounded-2xl hover:bg-gray-200 cursor-pointer"
+          >
+            <g>
+              <path d="M4 21V10.08l8-6.96 8 6.96V21h-6v-6h-4v6H4z"></path>
+            </g>
+          </svg>
+          <h1 className="text-[12px]">Home</h1>
+        </Link>
       </div>
       <div>
         <svg
