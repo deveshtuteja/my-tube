@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 
 const VideoCard = ({ info }) => {
-  console.log(info);
   if (!info) {
     // Handle the case where info is undefined or null
     return null;

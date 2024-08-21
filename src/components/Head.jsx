@@ -1,7 +1,42 @@
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { useEffect, useState } from "react";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Head = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    //Make an API call after every key press
+    //But if diff b/w two api calls is <200ms => Decline the API call
+    const timer = setTimeout(() => {
+      getSearchSuggestions();
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+  /*
+  * key-i
+   -Renders the component
+   -Calls useEffect
+   -Starts setTimeout of 200ms
+  *
+  *key-ip
+    -Destroys the component(useEffect return method)
+    -Re renders the component
+    -Calls useEffect
+    -Starts the timeout again of 200ms
+    -setTimeout(200)->Make an api call
+  */
+
+  const getSearchSuggestions = async () => {
+    console.log(searchQuery);
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const json = await data.json();
+    console.log(json[1]);
+  };
+
   const dispatch = useDispatch();
   const handleMenuClick = () => {
     dispatch(toggleMenu());
@@ -28,6 +63,10 @@ const Head = () => {
           type="text"
           placeholder="Search"
           className="w-[60%] h-8 rounded-full p-2 border border-gray-400"
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+          }}
         />
         <img
           className="w-[36px] h-[34px] cursor-pointer bg-gray-50 rounded-full hover:bg-gray-200"

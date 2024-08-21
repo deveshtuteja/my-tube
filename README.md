@@ -1,8 +1,14 @@
-# React + Vite
+# Debouncing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+typing slow:300ms
+typing fast:30ms
 
-Currently, two official plugins are available:
+Performance:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Iphone 15 pro max=14 letters\*1000=140000
+- With Debouncing- 3 API Calls=3\*1000=3000
+
+Debouncing with 300ms
+
+- if difference between key strokes <200ms => Decline API calls
+  (enhances user experience)
