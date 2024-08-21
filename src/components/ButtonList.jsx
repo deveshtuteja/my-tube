@@ -1,19 +1,24 @@
 import Button from "./Button";
 
 const ButtonList = () => {
+  const btnList = [
+    "All",
+    "Gaming",
+    "Live",
+    "Cricket",
+    "Coding",
+    "Music",
+    "News",
+    "Mixes",
+    "T-Series",
+    "Hip-Hop",
+    "Virat Kohli",
+  ];
   return (
     <div className="flex">
-      <Button name="All" />
-      <Button name="Gaming" />
-      <Button name="Live" />
-      <Button name="Cricket" />
-      <Button name="Coding" />
-      <Button name="Music" />
-      <Button name="Cricket" />
-      <Button name="Mixes" />
-      <Button name="T-Series" />
-      <Button name="Hip-Hop" />
-      <Button name="Virat Kohli" />
+      {btnList.map((btn) => (
+        <Button name={btn} key={btn} />
+      ))}
     </div>
   );
 };
