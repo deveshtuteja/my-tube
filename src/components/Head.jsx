@@ -5,10 +5,10 @@ import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
-    //Make an API call after every key press
-    //But if diff b/w two api calls is <200ms => Decline the API call
     const timer = setTimeout(() => {
       getSearchSuggestions();
     }, 300);
@@ -16,31 +16,19 @@ const Head = () => {
       clearTimeout(timer);
     };
   }, [searchQuery]);
-  /*
-  * key-i
-   -Renders the component
-   -Calls useEffect
-   -Starts setTimeout of 200ms
-  *
-  *key-ip
-    -Destroys the component(useEffect return method)
-    -Re renders the component
-    -Calls useEffect
-    -Starts the timeout again of 200ms
-    -setTimeout(200)->Make an api call
-  */
 
   const getSearchSuggestions = async () => {
     console.log(searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
-    console.log(json[1]);
+    setSuggestions(json[1]);
   };
 
   const dispatch = useDispatch();
   const handleMenuClick = () => {
     dispatch(toggleMenu());
   };
+
   return (
     <div className="grid grid-flow-col shadow-lg p-2 m-2">
       <div className="flex col-span-1">
@@ -58,21 +46,36 @@ const Head = () => {
           />
         </a>
       </div>
-      <div className="flex col-span-9 gap-2 justify-center">
+      <div className="flex col-span-9 gap-2 justify-center relative">
         <input
           type="text"
           placeholder="Search"
-          className="w-[60%] h-8 rounded-full p-2 border border-gray-400"
+          className="w-[60%] h-8 rounded-full p-2 border border-gray-400 z-10"
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);
           }}
+          onFocus={() => setShowSuggestions(true)}
+          onBlur={() => setShowSuggestions(false)}
         />
         <img
-          className="w-[36px] h-[34px] cursor-pointer bg-gray-50 rounded-full hover:bg-gray-200"
+          className="w-[36px] h-[34px] cursor-pointer bg-gray-50 rounded-full hover:bg-gray-200 z-10"
           src="https://static.thenounproject.com/png/2946467-200.png"
           alt="search"
         />
+        {showSuggestions && (
+          <div className="absolute bg-white w-[60%] top-full mt-[6px] left-[169px] rounded-lg shadow-lg z-20">
+            {suggestions.length != 0 && (
+              <ul className="py-2 px-4">
+                {suggestions.map((s) => (
+                  <li className="hover:bg-gray-100 p-2 shadow-sm" key={s}>
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
       </div>
       <div className="flex gap-4 col-span-2 justify-end">
         <svg
