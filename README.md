@@ -25,3 +25,17 @@ ip:
 iph:
 iphone:
 }
+
+# Live Chat Feature
+
+- Live Chat >>>> Infinite Scroll >>>>>> Pagination
+
+## Challenges
+
+- Get the data live
+- Update the UI
+
+### Data
+
+- Web Sockets -> bidirectional connection b/w UI and Server (No regular interval) -> Trading apps, WhatsApp
+- API Polling -> connection from server to UI (At regular interval data flows) -> Gmail, Cricbuzz
