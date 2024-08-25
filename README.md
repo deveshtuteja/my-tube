@@ -12,3 +12,16 @@ Debouncing with 300ms
 
 - if difference between key strokes <200ms => Decline API calls
   (enhances user experience)
+
+Cache :
+
+- Time complexity to search in an array- O(n)
+- Time complexity to search in an object- O(1)
+
+[i,ip,iph,iphone]
+{
+i:
+ip:
+iph:
+iphone:
+}
