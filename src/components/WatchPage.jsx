@@ -65,10 +65,10 @@ const WatchPage = () => {
                   alt="like"
                   className="w-[22px] h-[20px] inline-block"
                 />
-                {playingVideo[0]?.statistics?.likeCount / 100}K likes
+                {playingVideo[0]?.statistics?.likeCount / 1000}K likes
               </p>
               <p className="font-bold">
-                {playingVideo[0]?.statistics?.viewCount / 100}K views
+                {playingVideo[0]?.statistics?.viewCount / 1000}K views
               </p>
             </div>
             <CommentsContainer />
