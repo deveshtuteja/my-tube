@@ -1,6 +1,6 @@
 const ChatMessage = ({ name, message }) => {
   return (
-    <div className="flex gap-2 py-1 items-center shadow-sm">
+    <div className="flex gap-2 py-1 items-center shadow-sm dark:bg-gray-800">
       <img
         className="w-8 h-8"
         src="https://cdn-icons-png.flaticon.com/512/9203/9203764.png"

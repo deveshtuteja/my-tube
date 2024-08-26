@@ -75,7 +75,7 @@ const CommentsContainer = () => {
   const Comment = ({ data }) => {
     const { name, text, replies } = data;
     return (
-      <div className="flex py-2 bg-gray-100 shadow-sm rounded-md my-2">
+      <div className="flex py-2 bg-gray-100 shadow-sm rounded-md my-2 dark:bg-stone-900">
         <img
           src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png"
           alt="user-icon"

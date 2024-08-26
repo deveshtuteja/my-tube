@@ -11,7 +11,7 @@ const VideoCard = ({ info }) => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   if (!isMenuOpen)
     return (
-      <div className="py-2 px-4 m-2 w-[286px] shadow-md hover:shadow-xl bg-center dark:text-white ">
+      <div className="py-2 px-4 m-2 w-[286px] shadow-md hover:shadow-xl bg-center dark:text-white dark:bg-stone-900">
         <img
           src={thumbnails.medium.url}
           alt="thumbnail"

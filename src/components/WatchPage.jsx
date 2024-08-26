@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
@@ -13,6 +13,8 @@ const WatchPage = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   // console.log(searchParams.get("v"));
+
+  const isDarkTheme = useSelector((store) => store.theme.isDark);
 
   const getVidInfo = async () => {
     const data = await fetch(YOUTUBE_API_URL);
@@ -49,7 +51,7 @@ const WatchPage = () => {
           ></iframe>
 
           {/* Wrapper for title, stats, and comments */}
-          <div className="w-[1000px]">
+          <div className="w-[1000px] dark:bg-black dark:text-white">
             <h1 className="font-bold text-xl py-1">
               {playingVideo[0]?.snippet?.title}
             </h1>
@@ -62,11 +64,19 @@ const WatchPage = () => {
                   {playingVideo[0]?.statistics?.commentCount} comments
                 </p>
                 <p className="font-bold cursor-pointer">
-                  <img
-                    src="https://static.vecteezy.com/system/resources/thumbnails/000/423/558/small/Multimedia__287_29.jpg"
-                    alt="like"
-                    className="w-[22px] h-[20px] inline-block"
-                  />
+                  {!isDarkTheme ? (
+                    <img
+                      src="https://static.vecteezy.com/system/resources/thumbnails/000/423/558/small/Multimedia__287_29.jpg"
+                      alt="like"
+                      className="w-[22px] h-[20px] mr-1 inline-block"
+                    />
+                  ) : (
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFqjKLCaXFELoYyrS1yOM2U6oOR-1JtDiVPQ&s"
+                      alt="like"
+                      className="w-[24px] h-[24px] mr-1 inline-block rounded-full"
+                    />
+                  )}
                   {playingVideo[0]?.statistics?.likeCount / 1000}K likes
                 </p>
                 <p className="font-bold">
@@ -79,7 +89,7 @@ const WatchPage = () => {
         </div>
 
         {/* Sidebar with live chat and video suggestions */}
-        <div className="flex flex-col ml-4 w-full">
+        <div className="flex flex-col ml-4 w-full dark:bg-black dark:text-white">
           {/* Live Chat */}
           <LiveChat />
 
