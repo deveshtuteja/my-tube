@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResult } from "../utils/searchSlice";
 import ytLogo from "./yt-dark-logo.png";
+import { toggleTheme } from "../utils/themeSlice";
 
 const Head = () => {
   const [theme, setTheme] = useState("light");
@@ -24,6 +25,7 @@ const Head = () => {
 
   const handleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+    dispatch(toggleTheme());
   };
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const Head = () => {
   };
 
   return (
-    <div className="grid grid-flow-col shadow-lg p-4 my-2 mt-0 dark:bg-black dark:text-white">
+    <div className="grid grid-flow-col shadow-lg p-4 my-2 mb-0 mt-0 dark:bg-black dark:text-white">
       <div className="flex col-span-1">
         {theme === "light" ? (
           <img
