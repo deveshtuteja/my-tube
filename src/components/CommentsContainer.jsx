@@ -13,6 +13,11 @@ const CommentsContainer = () => {
     {
       name: "Devesh Tuteja",
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia doloribus veniam sequi tenetur",
+      replies: [],
+    },
+    {
+      name: "Devesh Tuteja",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia doloribus veniam sequi tenetur",
       replies: [
         {
           name: "Devesh Tuteja",

@@ -6,21 +6,24 @@ import CommentsContainer from "./CommentsContainer";
 import { YOUTUBE_API_URL } from "../utils/constants";
 import LiveChat from "./LiveChat";
 
+import RecommendedVideos from "./RecommendedVideos";
+
 const WatchPage = () => {
   const [videoInfo, setVideoInfo] = useState([]);
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
+  // console.log(searchParams.get("v"));
 
   const getVidInfo = async () => {
     const data = await fetch(YOUTUBE_API_URL);
     const json = await data.json();
     setVideoInfo(json.items);
   };
+
   const playingVideo = videoInfo.filter(
-    (video) => video.id == searchParams.get("v")
+    (video) => video.id === searchParams.get("v")
   );
-  console.log(playingVideo[0]);
+  // console.log(playingVideo[0]);
 
   useEffect(() => {
     dispatch(closeMenu());
@@ -30,9 +33,7 @@ const WatchPage = () => {
   return (
     <div className="px-4 w-full">
       <div className="flex">
-        {" "}
-        {/* Wrapper for Video and LiveChat */}
-        {/* Fixed width for video player */}
+        {/* Main content area with video and comments */}
         <div className="w-[1000px]">
           <iframe
             width="1000"
@@ -47,36 +48,45 @@ const WatchPage = () => {
             allowFullScreen
           ></iframe>
 
-          {/* Updated: Added a wrapper around title, stats, and comments */}
+          {/* Wrapper for title, stats, and comments */}
           <div className="w-[1000px]">
             <h1 className="font-bold text-xl py-1">
               {playingVideo[0]?.snippet?.title}
             </h1>
-            <div className="flex justify-between py-1">
-              <p className="font-bold">
-                {playingVideo[0]?.snippet?.channelTitle}
-              </p>
-              <p className="font-bold">
-                {playingVideo[0]?.statistics?.commentCount} comments
-              </p>
-              <p className="font-bold">
-                <img
-                  src="https://static.vecteezy.com/system/resources/thumbnails/000/423/558/small/Multimedia__287_29.jpg"
-                  alt="like"
-                  className="w-[22px] h-[20px] inline-block"
-                />
-                {playingVideo[0]?.statistics?.likeCount / 1000}K likes
-              </p>
-              <p className="font-bold">
-                {playingVideo[0]?.statistics?.viewCount / 1000}K views
-              </p>
-            </div>
+            {playingVideo[0] && (
+              <div className="flex justify-between py-1">
+                <p className="font-bold">
+                  {playingVideo[0]?.snippet?.channelTitle}
+                </p>
+                <p className="font-bold">
+                  {playingVideo[0]?.statistics?.commentCount} comments
+                </p>
+                <p className="font-bold cursor-pointer">
+                  <img
+                    src="https://static.vecteezy.com/system/resources/thumbnails/000/423/558/small/Multimedia__287_29.jpg"
+                    alt="like"
+                    className="w-[22px] h-[20px] inline-block"
+                  />
+                  {playingVideo[0]?.statistics?.likeCount / 1000}K likes
+                </p>
+                <p className="font-bold">
+                  {playingVideo[0]?.statistics?.viewCount / 1000}K views
+                </p>
+              </div>
+            )}
             <CommentsContainer />
           </div>
         </div>
-        {/* Make LiveChat flex-grow to take up the remaining space */}
-        <div className="flex-grow ml-4">
+
+        {/* Sidebar with live chat and video suggestions */}
+        <div className="flex flex-col ml-4 w-full">
+          {/* Live Chat */}
           <LiveChat />
+
+          {/* Suggested Videos */}
+          <div className="mt-4 self-center">
+            <RecommendedVideos />
+          </div>
         </div>
       </div>
     </div>
