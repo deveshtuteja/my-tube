@@ -15,7 +15,7 @@ const ButtonList = () => {
     "Virat Kohli",
   ];
   return (
-    <div className="flex">
+    <div className="flex dark:bg-black">
       {btnList.map((btn) => (
         <Button name={btn} key={btn} />
       ))}

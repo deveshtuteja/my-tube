@@ -11,7 +11,7 @@ const VideoCard = ({ info }) => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   if (!isMenuOpen)
     return (
-      <div className="py-2 px-4 m-2 w-[286px] shadow-md hover:shadow-xl bg-center ">
+      <div className="py-2 px-4 m-2 w-[286px] shadow-md hover:shadow-xl bg-center dark:text-white ">
         <img
           src={thumbnails.medium.url}
           alt="thumbnail"
@@ -25,12 +25,12 @@ const VideoCard = ({ info }) => {
       </div>
     );
   return (
-    <div className="py-2 px-4 m-2 w-[264px] shadow-md hover:shadow-xl bg-center">
+    <div className="py-2 px-4 m-2 w-[264px] shadow-md hover:shadow-xl bg-center dark:text-white dark:bg-stone-900">
       <img src={thumbnails.medium.url} alt="thumbnail" className="rounded-xl" />
       <ul>
         <li className="font-bold py-1">{title}</li>
-        <li>{channelTitle}</li>
-        <li>{statistics.viewCount} views</li>
+        <li className="dark:text-gray-400">{channelTitle}</li>
+        <li className="dark:text-gray-400">{statistics.viewCount} views</li>
       </ul>
     </div>
   );

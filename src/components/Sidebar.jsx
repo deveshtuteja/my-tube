@@ -8,7 +8,7 @@ const Sidebar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className="flex flex-col shadow-lg h-screen w-32 gap-6 px-4 mt-0 pt-8 dark:bg-black">
+    <div className="flex flex-col shadow-lg  w-32 gap-6 px-4 mt-0 pt-8 dark:bg-black">
       <div>
         <Link to="/">
           <svg
