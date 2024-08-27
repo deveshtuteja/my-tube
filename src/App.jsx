@@ -7,6 +7,7 @@ import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
 import Demo from "./components/Demo";
 import Demo2 from "./components/Demo2";
+import Footer from "./components/Footer";
 
 const appRouter = createBrowserRouter([
   {
@@ -50,6 +51,7 @@ function App() {
           -VideoContainer
             -VideoCard
       */}
+        <Footer />
       </div>
     </Provider>
   );
