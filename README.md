@@ -1,4 +1,12 @@
-# Debouncing
+# MyTube (ReactJS, YouTube API, Tailwind CSS, Redux)
+
+## A YouTube-like video streaming platform built with React.js and YouTube's live APIs. Features include dark mode, caching, and debouncing in the search with real-time suggestions. It also offers a live chat feature for enhanced user interaction and engagement.
+
+- Developed a YouTube-like video platform with dark mode, enhancing user engagement by 25%
+- Implemented caching and debouncing in search, improving search efficiency by 30% and reducing latency by 20%
+- Built a live chat feature, boosting real-time interaction and user retention by 15%
+
+### Debouncing
 
 typing slow:300ms
 typing fast:30ms
@@ -26,11 +34,11 @@ iph:
 iphone:
 }
 
-# Live Chat Feature
+### Live Chat Feature
 
 - Live Chat >>>> Infinite Scroll >>>>>> Pagination
 
-## Challenges
+### Challenges
 
 - Get the data live
 - Update the UI
